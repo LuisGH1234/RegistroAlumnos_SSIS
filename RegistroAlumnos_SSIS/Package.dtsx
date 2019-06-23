@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="42"
-  DTS:VersionGUID="{8A02FCE8-794F-44A7-A9EF-8B10CD4F3BC4}">
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{3E38B0BB-CC40-4D2E-BA2D-CAAC41E008E3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -43,7 +43,7 @@
       DTS:ObjectName="Excel Connection Manager Master 2019">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\lagh3\Documents\2019-1\FunIntNegocios\TB\2019-1-Completo.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\lagh3\Documents\2019-1\FunIntNegocios\TB\2019-1-Completo.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -252,7 +252,7 @@
                       dataType="wstr"
                       errorOrTruncationOperation="Cálculo"
                       errorRowDisposition="FailComponent"
-                      length="765"
+                      length="767"
                       lineageId="Package\Cargar Alumnos\Columna derivada 1.Outputs[Salida de columna derivada].Columns[D_NombreCompleto]"
                       name="D_NombreCompleto"
                       truncationRowDisposition="FailComponent">
@@ -261,13 +261,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Expresión de columna derivada"
-                          name="Expression">#{Package\Cargar Alumnos\Ordenar.Outputs[Salida de ordenación].Columns[C_NOMBRES]} + #{Package\Cargar Alumnos\Ordenar.Outputs[Salida de ordenación].Columns[C_APELLIDO_PATERN]} + #{Package\Cargar Alumnos\Ordenar.Outputs[Salida de ordenación].Columns[C_APELLIDO_MATERN]}</property>
+                          name="Expression">#{Package\Cargar Alumnos\Ordenar.Outputs[Salida de ordenación].Columns[C_NOMBRES]} + " " + #{Package\Cargar Alumnos\Ordenar.Outputs[Salida de ordenación].Columns[C_APELLIDO_PATERN]} + " " + #{Package\Cargar Alumnos\Ordenar.Outputs[Salida de ordenación].Columns[C_APELLIDO_MATERN]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expresión descriptiva de columna derivada"
                           expressionType="Notify"
-                          name="FriendlyExpression">C_NOMBRES + C_APELLIDO_PATERN + C_APELLIDO_MATERN</property>
+                          name="FriendlyExpression">C_NOMBRES + " " + C_APELLIDO_PATERN + " " + C_APELLIDO_MATERN</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -506,7 +506,7 @@
                     <inputColumn
                       refId="Package\Cargar Alumnos\Conversión de datos 1.Inputs[Entrada de conversión de datos].Columns[D_NombreCompleto]"
                       cachedDataType="wstr"
-                      cachedLength="765"
+                      cachedLength="767"
                       cachedName="D_NombreCompleto"
                       lineageId="Package\Cargar Alumnos\Columna derivada 1.Outputs[Salida de columna derivada].Columns[D_NombreCompleto]" />
                   </inputColumns>
@@ -5372,6 +5372,12 @@
                       refId="Package\Cargar Carreras\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Codigo]"
                       dataType="i4"
                       name="Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Carreras\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Promedio_Beca]"
+                      dataType="numeric"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -18430,6 +18436,17 @@ where [refTable].[Nombre] = ?</property>
                       lineageId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de origen de OLE DB].Columns[Codigo]"
                       name="Codigo"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de origen de OLE DB].Columns[Promedio_Beca]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de origen de OLE DB].ExternalColumns[Promedio_Beca]"
+                      lineageId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de origen de OLE DB].Columns[Promedio_Beca]"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -18446,6 +18463,12 @@ where [refTable].[Nombre] = ?</property>
                       refId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de origen de OLE DB].ExternalColumns[Codigo]"
                       dataType="i4"
                       name="Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de origen de OLE DB].ExternalColumns[Promedio_Beca]"
+                      dataType="numeric"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -18469,6 +18492,13 @@ where [refTable].[Nombre] = ?</property>
                       dataType="i4"
                       lineageId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de error de origen de OLE DB].Columns[Codigo]"
                       name="Codigo" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de error de origen de OLE DB].Columns[Promedio_Beca]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de error de origen de OLE DB].Columns[Promedio_Beca]"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2" />
                     <outputColumn
                       refId="Package\Cargar Matriculas\Leer Carreras.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -24258,34 +24288,34 @@ where [refTable].[Nombre] = ?</property>
               startId="Package\Cargar Matriculas\Buscar SK_Periodo.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
               refId="Package\Cargar Matriculas.Paths[Salida de ordenación5]"
-              endId="Package\Cargar Matriculas\Combinación de mezcla 2.Inputs[Entrada derecha de combinación de mezcla]"
+              endId="Package\Cargar Matriculas\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
               name="Salida de ordenación"
-              startId="Package\Cargar Matriculas\Ordenar por COD_Alumno 2.Outputs[Salida de ordenación]" />
+              startId="Package\Cargar Matriculas\Ordenar por COD_Curso.Outputs[Salida de ordenación]" />
             <path
               refId="Package\Cargar Matriculas.Paths[Salida de ordenación4]"
-              endId="Package\Cargar Matriculas\Combinación de mezcla 2.Inputs[Entrada izquierda de combinación de mezcla]"
-              name="Salida de ordenación"
-              startId="Package\Cargar Matriculas\Ordenar por COD_Alumno 1.Outputs[Salida de ordenación]" />
-            <path
-              refId="Package\Cargar Matriculas.Paths[Salida de ordenación3]"
-              endId="Package\Cargar Matriculas\Combinación de mezcla 1.Inputs[Entrada derecha de combinación de mezcla]"
-              name="Salida de ordenación"
-              startId="Package\Cargar Matriculas\Ordenar por COD_Carrera 2.Outputs[Salida de ordenación]" />
-            <path
-              refId="Package\Cargar Matriculas.Paths[Salida de ordenación2]"
-              endId="Package\Cargar Matriculas\Combinación de mezcla 1.Inputs[Entrada izquierda de combinación de mezcla]"
-              name="Salida de ordenación"
-              startId="Package\Cargar Matriculas\Ordenar por COD_Carrera 1.Outputs[Salida de ordenación]" />
-            <path
-              refId="Package\Cargar Matriculas.Paths[Salida de ordenación1]"
               endId="Package\Cargar Matriculas\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de ordenación"
               startId="Package\Cargar Matriculas\Ordenar por COD.Outputs[Salida de ordenación]" />
             <path
-              refId="Package\Cargar Matriculas.Paths[Salida de ordenación]"
-              endId="Package\Cargar Matriculas\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+              refId="Package\Cargar Matriculas.Paths[Salida de ordenación3]"
+              endId="Package\Cargar Matriculas\Combinación de mezcla 1.Inputs[Entrada izquierda de combinación de mezcla]"
               name="Salida de ordenación"
-              startId="Package\Cargar Matriculas\Ordenar por COD_Curso.Outputs[Salida de ordenación]" />
+              startId="Package\Cargar Matriculas\Ordenar por COD_Carrera 1.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Cargar Matriculas.Paths[Salida de ordenación2]"
+              endId="Package\Cargar Matriculas\Combinación de mezcla 1.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Cargar Matriculas\Ordenar por COD_Carrera 2.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Cargar Matriculas.Paths[Salida de ordenación1]"
+              endId="Package\Cargar Matriculas\Combinación de mezcla 2.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Cargar Matriculas\Ordenar por COD_Alumno 1.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Cargar Matriculas.Paths[Salida de ordenación]"
+              endId="Package\Cargar Matriculas\Combinación de mezcla 2.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Cargar Matriculas\Ordenar por COD_Alumno 2.Outputs[Salida de ordenación]" />
             <path
               refId="Package\Cargar Matriculas.Paths[Salida de origen de Excel]"
               endId="Package\Cargar Matriculas\Unión de todo.Inputs[Entrada de Unión de todo 1]"
@@ -24422,13 +24452,13 @@ where [refTable].[Nombre] = ?</property>
                           containsID="true"
                           dataType="System.String"
                           description="Expresión de columna derivada"
-                          name="Expression">#{Package\Cargar Periodos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[C_COD_PERIODO_MATRICULA]} == 201802 ? "Segundo Periodo del 2018" : "Primer periodo del 2018"</property>
+                          name="Expression">#{Package\Cargar Periodos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[C_COD_PERIODO_MATRICULA]} == 201802 ? "Segundo Periodo del 2018" : "Primer periodo del 2019"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expresión descriptiva de columna derivada"
                           expressionType="Notify"
-                          name="FriendlyExpression">C_COD_PERIODO_MATRICULA == 201802 ? "Segundo Periodo del 2018" : "Primer periodo del 2018"</property>
+                          name="FriendlyExpression">C_COD_PERIODO_MATRICULA == 201802 ? "Segundo Periodo del 2018" : "Primer periodo del 2019"</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -29553,6 +29583,17 @@ where [refTable].[SK_Periodo] = ?</property>
                       lineageId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].Columns[Codigo]"
                       name="Codigo"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].Columns[Promedio_Beca]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].ExternalColumns[Promedio_Beca]"
+                      lineageId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].Columns[Promedio_Beca]"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -29569,6 +29610,12 @@ where [refTable].[SK_Periodo] = ?</property>
                       refId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].ExternalColumns[Codigo]"
                       dataType="i4"
                       name="Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].ExternalColumns[Promedio_Beca]"
+                      dataType="numeric"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -29592,6 +29639,13 @@ where [refTable].[SK_Periodo] = ?</property>
                       dataType="i4"
                       lineageId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de error de origen de OLE DB].Columns[Codigo]"
                       name="Codigo" />
+                    <outputColumn
+                      refId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de error de origen de OLE DB].Columns[Promedio_Beca]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de error de origen de OLE DB].Columns[Promedio_Beca]"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2" />
                     <outputColumn
                       refId="Package\Cargar Ponderado_Alumno\Cargar Carreras.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -32743,6 +32797,17 @@ where [refTable].[Nombre] = ?</property>
                       lineageId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].Columns[Codigo]"
                       name="Codigo"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].Columns[Promedio_Beca]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].ExternalColumns[Promedio_Beca]"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].Columns[Promedio_Beca]"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -32759,6 +32824,12 @@ where [refTable].[Nombre] = ?</property>
                       refId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].ExternalColumns[Codigo]"
                       dataType="i4"
                       name="Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de origen de OLE DB].ExternalColumns[Promedio_Beca]"
+                      dataType="numeric"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -32782,6 +32853,13 @@ where [refTable].[Nombre] = ?</property>
                       dataType="i4"
                       lineageId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de error de origen de OLE DB].Columns[Codigo]"
                       name="Codigo" />
+                    <outputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de error de origen de OLE DB].Columns[Promedio_Beca]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de error de origen de OLE DB].Columns[Promedio_Beca]"
+                      name="Promedio_Beca"
+                      precision="4"
+                      scale="2" />
                     <outputColumn
                       refId="Package\Cargar Promedio_Curso_Alumno\Cargar Carreras.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -39639,6 +39717,524 @@ where [refTable].[Nombre] = ?</property>
                   refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2]"
                   hasSideEffects="true"
                   name="Entrada de Unión de todo 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_LINEA_NEGOCIO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COD_LINEA_NEGOCIO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_LINEA_NEGOCIO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_LINEA_NEGOCIO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_PERIODO_MATRICULA]"
+                      cachedDataType="r8"
+                      cachedName="COD_PERIODO_MATRICULA"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_PERIODO_MATRICULA]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_PERIODO_MATRICULA]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_MODALIDAD_ESTUDIO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COD_MODALIDAD_ESTUDIO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_MODALIDAD_ESTUDIO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_MODALIDAD_ESTUDIO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_ESTADO_MATRICULA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COD_ESTADO_MATRICULA"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_ESTADO_MATRICULA]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_ESTADO_MATRICULA]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[ESTADO_MATRICULA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ESTADO_MATRICULA"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[ESTADO_MATRICULA]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ESTADO_MATRICULA]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_TIPO_MATRICULA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COD_TIPO_MATRICULA"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_TIPO_MATRICULA]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_TIPO_MATRICULA]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[TIPO_MATRICULA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TIPO_MATRICULA"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[TIPO_MATRICULA]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TIPO_MATRICULA]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[M#COD_ALUMNO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="M#COD_ALUMNO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[M#COD_ALUMNO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[M#COD_ALUMNO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_PERSONA]"
+                      cachedDataType="r8"
+                      cachedName="COD_PERSONA"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_PERSONA]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_PERSONA]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[APELLIDO_PATERN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="APELLIDO_PATERN"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[APELLIDO_PATERN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[APELLIDO_PATERN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[APELLIDO_MATERN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="APELLIDO_MATERN"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[APELLIDO_MATERN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[APELLIDO_MATERN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[NOMBRES]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NOMBRES"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[NOMBRES]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[NOMBRES]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[IND_CICLO_ALUMNO]"
+                      cachedDataType="r8"
+                      cachedName="IND_CICLO_ALUMNO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[IND_CICLO_ALUMNO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[IND_CICLO_ALUMNO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[DES_LOCAL]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DES_LOCAL"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[DES_LOCAL]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[DES_LOCAL]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_PRODUCTO]"
+                      cachedDataType="r8"
+                      cachedName="COD_PRODUCTO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_PRODUCTO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_PRODUCTO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[CARRERA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CARRERA"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[CARRERA]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[CARRERA]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_FACULTAD]"
+                      cachedDataType="r8"
+                      cachedName="COD_FACULTAD"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_FACULTAD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_FACULTAD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[FACULTAD]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FACULTAD"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[FACULTAD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[FACULTAD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[SEXO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SEXO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[SEXO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[SEXO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[FECHA_NACIMIENT]"
+                      cachedDataType="date"
+                      cachedName="FECHA_NACIMIENT"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[FECHA_NACIMIENT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[FECHA_NACIMIENT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_TIPO_INGRESO]"
+                      cachedDataType="r8"
+                      cachedName="COD_TIPO_INGRESO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_TIPO_INGRESO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_TIPO_INGRESO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[DESCRIPCION]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DESCRIPCION"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[DESCRIPCION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[DESCRIPCION]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[NRO_PONDERADO_ACTUAL]"
+                      cachedDataType="r8"
+                      cachedName="NRO_PONDERADO_ACTUAL"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[NRO_PONDERADO_ACTUAL]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[NRO_PONDERADO_ACTUAL]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[NRO_PONDERADO_ACUMULADO]"
+                      cachedDataType="r8"
+                      cachedName="NRO_PONDERADO_ACUMULADO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[NRO_PONDERADO_ACUMULADO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[NRO_PONDERADO_ACUMULADO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_CURSO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COD_CURSO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_CURSO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_CURSO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_DIRECCION]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COD_DIRECCION"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_DIRECCION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_DIRECCION]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[DIRECCION]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DIRECCION"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[DIRECCION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[DIRECCION]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[CANT_CREDITOS]"
+                      cachedDataType="r8"
+                      cachedName="CANT_CREDITOS"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[CANT_CREDITOS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[CANT_CREDITOS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[CANT_CREDEQUIV]"
+                      cachedDataType="r8"
+                      cachedName="CANT_CREDEQUIV"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[CANT_CREDEQUIV]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[CANT_CREDEQUIV]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[NIVEL_CURSO_MALLA]"
+                      cachedDataType="r8"
+                      cachedName="NIVEL_CURSO_MALLA"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[NIVEL_CURSO_MALLA]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[NIVEL_CURSO_MALLA]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_SECCION]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COD_SECCION"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_SECCION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_SECCION]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_GRUPO]"
+                      cachedDataType="r8"
+                      cachedName="COD_GRUPO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_GRUPO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_GRUPO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_CURRICULO]"
+                      cachedDataType="r8"
+                      cachedName="COD_CURRICULO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_CURRICULO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_CURRICULO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[COD_CURSO_1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COD_CURSO_1"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[COD_CURSO_1]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[COD_CURSO_1]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[DES_CURSO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DES_CURSO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[DES_CURSO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[DES_CURSO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[NRO_VEZ_CURSO]"
+                      cachedDataType="r8"
+                      cachedName="NRO_VEZ_CURSO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[NRO_VEZ_CURSO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[NRO_VEZ_CURSO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[NRO_NOTA_CURSO]"
+                      cachedDataType="r8"
+                      cachedName="NRO_NOTA_CURSO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[NRO_NOTA_CURSO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[NRO_NOTA_CURSO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[RETIRADO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RETIRADO"
+                      lineageId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel].Columns[RETIRADO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargar Promedio_Curso_Alumno\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[RETIRADO]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
@@ -39920,44 +40516,49 @@ where [refTable].[Nombre] = ?</property>
               startId="Package\Cargar Promedio_Curso_Alumno\Buscar Estado_Matricula.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
               refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación5]"
-              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla 1.Inputs[Entrada izquierda de combinación de mezcla]"
-              name="Salida de ordenación"
-              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Carrera 1.Outputs[Salida de ordenación]" />
-            <path
-              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación4]"
-              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla 2.Inputs[Entrada derecha de combinación de mezcla]"
-              name="Salida de ordenación"
-              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Alumno 2.Outputs[Salida de ordenación]" />
-            <path
-              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación3]"
-              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla 2.Inputs[Entrada izquierda de combinación de mezcla]"
-              name="Salida de ordenación"
-              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Alumno 1.Outputs[Salida de ordenación]" />
-            <path
-              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación1]"
-              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
-              name="Salida de ordenación"
-              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por COD_Curso 2.Outputs[Salida de ordenación]" />
-            <path
-              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación]"
-              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
-              name="Salida de ordenación"
-              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por COD_Curso 1.Outputs[Salida de ordenación]" />
-            <path
-              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación2]"
               endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla 1.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de ordenación"
               startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Carrera 2.Outputs[Salida de ordenación]" />
             <path
-              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de Excel1]"
+              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación4]"
+              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por COD_Curso 1.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación3]"
+              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por COD_Curso 2.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación1]"
+              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla 2.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Alumno 2.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación]"
+              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla 1.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Carrera 1.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación2]"
+              endId="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla 2.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Alumno 1.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de Excel]"
               endId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 2]"
               name="Salida de origen de Excel"
               startId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901.Outputs[Salida de origen de Excel]" />
             <path
-              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de Excel]"
+              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de Excel1]"
               endId="Package\Cargar Promedio_Curso_Alumno\Unión de todo.Inputs[Entrada de Unión de todo 1]"
               name="Salida de origen de Excel"
               startId="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201802.Outputs[Salida de origen de Excel]" />
+            <path
+              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de OLE DB2]"
+              endId="Package\Cargar Promedio_Curso_Alumno\Ordenar por COD_Curso 2.Inputs[Entrada de ordenación]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Cargar Promedio_Curso_Alumno\Leer Cursos.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de OLE DB]"
               endId="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Carrera 2.Inputs[Entrada de ordenación]"
@@ -39968,11 +40569,6 @@ where [refTable].[Nombre] = ?</property>
               endId="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Alumno 2.Inputs[Entrada de ordenación]"
               name="Salida de origen de OLE DB"
               startId="Package\Cargar Promedio_Curso_Alumno\Cargar Alumnos.Outputs[Salida de origen de OLE DB]" />
-            <path
-              refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de OLE DB2]"
-              endId="Package\Cargar Promedio_Curso_Alumno\Ordenar por COD_Curso 2.Inputs[Entrada de ordenación]"
-              name="Salida de origen de OLE DB"
-              startId="Package\Cargar Promedio_Curso_Alumno\Leer Cursos.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de Unión de todo 1]"
               endId="Package\Cargar Promedio_Curso_Alumno\Conversión de datos.Inputs[Entrada de conversión de datos]"
@@ -43190,17 +43786,25 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Alumnos\Ordenar"
           TopLeft="436,326" />
         <NodeLayout
+          Size="181,42"
+          Id="Package\Cargar Alumnos\Leer Alumnos 201802"
+          TopLeft="234,24" />
+        <NodeLayout
           Size="175,42"
           Id="Package\Cargar Alumnos\Conversión de datos"
           TopLeft="407,171" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Cargar Alumnos\Leer Alumnos 201901"
+          TopLeft="606,22" />
         <NodeLayout
           Size="184,42"
           Id="Package\Cargar Alumnos\Conversión de datos 1"
           TopLeft="405,494" />
         <NodeLayout
-          Size="181,42"
-          Id="Package\Cargar Alumnos\Leer Alumnos 201802"
-          TopLeft="234,24" />
+          Size="145,42"
+          Id="Package\Cargar Alumnos\Unión de todo"
+          TopLeft="422,102" />
         <NodeLayout
           Size="164,42"
           Id="Package\Cargar Alumnos\Columna derivada"
@@ -43213,6 +43817,40 @@ where [refTable].[Nombre] = ?</property>
           Size="168,42"
           Id="Package\Cargar Alumnos\Destino de OLE DB"
           TopLeft="415,574" />
+        <EdgeLayout
+          Id="Package\Cargar Alumnos.Paths[Salida de origen de Excel]"
+          TopLeft="324.5,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="147.166666666667,36"
+              Start="0,0"
+              End="147.166666666667,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.3642564802183" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.3642564802183"
+                    Point2="0,21.3642564802183"
+                    Point3="4,21.3642564802183" />
+                  <mssgle:LineSegment
+                    End="143.166666666667,21.3642564802183" />
+                  <mssgle:CubicBezierSegment
+                    Point1="143.166666666667,21.3642564802183"
+                    Point2="147.166666666667,21.3642564802183"
+                    Point3="147.166666666667,25.3642564802183" />
+                  <mssgle:LineSegment
+                    End="147.166666666667,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Alumnos.Paths[Salida de ordenación]"
           TopLeft="495.5,368">
@@ -43323,40 +43961,20 @@ where [refTable].[Nombre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="181,42"
-          Id="Package\Cargar Alumnos\Leer Alumnos 201901"
-          TopLeft="606,22" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Cargar Alumnos\Unión de todo"
-          TopLeft="422,102" />
         <EdgeLayout
-          Id="Package\Cargar Alumnos.Paths[Salida de origen de Excel]"
-          TopLeft="324.5,66">
+          Id="Package\Cargar Alumnos.Paths[Salida de Unión de todo 1]"
+          TopLeft="494.5,144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="147.166666666667,36"
+              EndConnector="0,27"
               Start="0,0"
-              End="147.166666666667,28.5">
+              End="0,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.3642564802183" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.3642564802183"
-                    Point2="0,21.3642564802183"
-                    Point3="4,21.3642564802183" />
-                  <mssgle:LineSegment
-                    End="143.166666666667,21.3642564802183" />
-                  <mssgle:CubicBezierSegment
-                    Point1="143.166666666667,21.3642564802183"
-                    Point2="147.166666666667,21.3642564802183"
-                    Point3="147.166666666667,25.3642564802183" />
-                  <mssgle:LineSegment
-                    End="147.166666666667,28.5" />
+                    End="0,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -43399,33 +44017,24 @@ where [refTable].[Nombre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Alumnos.Paths[Salida de Unión de todo 1]"
-          TopLeft="494.5,144">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27"
-              Start="0,0"
-              End="0,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Cargar Alumnos\Leer Alumnos 201802">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Alumnos\Leer Alumnos 201901">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -43456,6 +44065,18 @@ where [refTable].[Nombre] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="168,42"
+          Id="Package\Cargar Carreras\Destino de OLE DB"
+          TopLeft="377,372" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Cargar Carreras\Leer Carreras 201901"
+          TopLeft="492,28" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Cargar Carreras\Unión de todo"
+          TopLeft="390,129" />
+        <NodeLayout
           Size="180,42"
           Id="Package\Cargar Carreras\Leer Carreras 201802"
           TopLeft="239,25" />
@@ -43464,91 +44085,23 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Carreras\Ordenar"
           TopLeft="409,287" />
         <NodeLayout
-          Size="168,42"
-          Id="Package\Cargar Carreras\Destino de OLE DB"
-          TopLeft="377,372" />
-        <NodeLayout
           Size="175,42"
           Id="Package\Cargar Carreras\Conversión de datos"
           TopLeft="381,206" />
         <EdgeLayout
-          Id="Package\Cargar Carreras.Paths[Salida de conversión de datos]"
-          TopLeft="468,248">
+          Id="Package\Cargar Carreras.Paths[Salida de Unión de todo 1]"
+          TopLeft="465.5,171">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,31.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Carreras.Paths[Salida de ordenación]"
-          TopLeft="464.25,329">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Cargar Carreras\Unión de todo"
-          TopLeft="390,129" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Cargar Carreras\Leer Carreras 201901"
-          TopLeft="492,28" />
-        <EdgeLayout
-          Id="Package\Cargar Carreras.Paths[Salida de origen de Excel]"
-          TopLeft="329,67">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="110.666666666667,62"
-              Start="0,0"
-              End="110.666666666667,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.793997271487" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,32.793997271487"
-                    Point2="0,36.793997271487"
-                    Point3="4,36.793997271487" />
-                  <mssgle:LineSegment
-                    End="106.666666666667,36.793997271487" />
-                  <mssgle:CubicBezierSegment
-                    Point1="106.666666666667,36.793997271487"
-                    Point2="110.666666666667,36.793997271487"
-                    Point3="110.666666666667,40.793997271487" />
-                  <mssgle:LineSegment
-                    End="110.666666666667,54.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -43592,19 +44145,75 @@ where [refTable].[Nombre] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Cargar Carreras.Paths[Salida de Unión de todo 1]"
-          TopLeft="465.5,171">
+          Id="Package\Cargar Carreras.Paths[Salida de origen de Excel]"
+          TopLeft="329,67">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35"
+              EndConnector="110.666666666667,62"
               Start="0,0"
-              End="0,27.5">
+              End="110.666666666667,54.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5" />
+                    End="0,32.793997271487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.793997271487"
+                    Point2="0,36.793997271487"
+                    Point3="4,36.793997271487" />
+                  <mssgle:LineSegment
+                    End="106.666666666667,36.793997271487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.666666666667,36.793997271487"
+                    Point2="110.666666666667,36.793997271487"
+                    Point3="110.666666666667,40.793997271487" />
+                  <mssgle:LineSegment
+                    End="110.666666666667,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Carreras.Paths[Salida de ordenación]"
+          TopLeft="464.25,329">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Carreras.Paths[Salida de conversión de datos]"
+          TopLeft="468,248">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -43617,7 +44226,7 @@ where [refTable].[Nombre] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Cargar Carreras\Leer Carreras 201802">
+    design-time-name="Package\Cargar Carreras\Destino de OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -43630,7 +44239,20 @@ where [refTable].[Nombre] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Cargar Carreras\Destino de OLE DB">
+    design-time-name="Package\Cargar Carreras\Leer Carreras 201901">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Carreras\Leer Carreras 201802">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -43646,7 +44268,7 @@ where [refTable].[Nombre] = ?</property>
     design-time-name="Package\Cargar Cursos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="175,42"
           Id="Package\Cargar Cursos\Conversión de datos"
@@ -43656,83 +44278,13 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Cursos\Columna derivada"
           TopLeft="483,282" />
         <NodeLayout
-          Size="117,42"
-          Id="Package\Cargar Cursos\Ordenar"
-          TopLeft="501,362" />
-        <NodeLayout
           Size="172,42"
           Id="Package\Cargar Cursos\Leer Cursos 201802"
           TopLeft="309,20" />
         <NodeLayout
-          Size="168,42"
-          Id="Package\Cargar Cursos\Destino de OLE DB"
-          TopLeft="478,448" />
-        <EdgeLayout
-          Id="Package\Cargar Cursos.Paths[Salida de conversión de datos]"
-          TopLeft="564.25,237">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45"
-              Start="0,0"
-              End="0,37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Cursos.Paths[Salida de columna derivada]"
-          TopLeft="562.25,324">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Cursos.Paths[Salida de ordenación]"
-          TopLeft="560.75,404">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="117,42"
+          Id="Package\Cargar Cursos\Ordenar"
+          TopLeft="501,362" />
         <NodeLayout
           Size="172,42"
           Id="Package\Cargar Cursos\Leer Cursos 201901"
@@ -43741,40 +44293,10 @@ where [refTable].[Nombre] = ?</property>
           Size="145,42"
           Id="Package\Cargar Cursos\Unión de todo"
           TopLeft="492,123" />
-        <EdgeLayout
-          Id="Package\Cargar Cursos.Paths[Salida de origen de Excel]"
-          TopLeft="395,62">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="169.5,61"
-              Start="0,0"
-              End="169.5,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.5"
-                    Point2="0,30.5"
-                    Point3="4,30.5" />
-                  <mssgle:LineSegment
-                    End="165.5,30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="165.5,30.5"
-                    Point2="169.5,30.5"
-                    Point3="169.5,34.5" />
-                  <mssgle:LineSegment
-                    End="169.5,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Cargar Cursos\Destino de OLE DB"
+          TopLeft="478,448" />
         <EdgeLayout
           Id="Package\Cargar Cursos.Paths[Salida de origen de Excel1]"
           TopLeft="734,65">
@@ -43806,7 +44328,117 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Cursos.Paths[Salida de origen de Excel]"
+          TopLeft="395,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="169.5,61"
+              Start="0,0"
+              End="169.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="165.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="165.5,30.5"
+                    Point2="169.5,30.5"
+                    Point3="169.5,34.5" />
+                  <mssgle:LineSegment
+                    End="169.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Cursos.Paths[Salida de ordenación]"
+          TopLeft="560.75,404">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Cursos.Paths[Salida de conversión de datos]"
+          TopLeft="564.25,237">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Cursos.Paths[Salida de columna derivada]"
+          TopLeft="562.25,324">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -43828,7 +44460,9 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -43836,6 +44470,19 @@ where [refTable].[Nombre] = ?</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Cargar Cursos\Leer Cursos 201802">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Cursos\Leer Cursos 201901">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -43864,7 +44511,7 @@ where [refTable].[Nombre] = ?</property>
     design-time-name="Package\Cargar Estados Matricula">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="153,42"
           Id="Package\Cargar Estados Matricula\Origen de Excel"
@@ -43900,7 +44547,9 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -43922,7 +44571,9 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -43944,7 +44595,9 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -43982,9 +44635,9 @@ where [refTable].[Nombre] = ?</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="211,42"
-          Id="Package\Cargar Matriculas\Ordenar por COD_Alumno 2"
-          TopLeft="1073.71428571429,938.142857142857" />
+          Size="161,42"
+          Id="Package\Cargar Matriculas\Ordenar por COD"
+          TopLeft="551,425" />
         <NodeLayout
           Size="199,42"
           Id="Package\Cargar Matriculas\Combinación de mezcla 2"
@@ -43998,17 +44651,29 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Matriculas\Leer Alumnos"
           TopLeft="1106,46" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\Cargar Matriculas\Ordenar por COD"
-          TopLeft="551,425" />
+          Size="210,42"
+          Id="Package\Cargar Matriculas\Ordenar por COD_Carrera 2"
+          TopLeft="799,681" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Cargar Matriculas\Leer Matriculas 201901"
+          TopLeft="283,17" />
         <NodeLayout
           Size="155,42"
           Id="Package\Cargar Matriculas\Buscar SK_Sede"
           TopLeft="316,230" />
         <NodeLayout
-          Size="211,42"
-          Id="Package\Cargar Matriculas\Ordenar por COD_Alumno 1"
-          TopLeft="615.428571428571,937.142857142857" />
+          Size="193,42"
+          Id="Package\Cargar Matriculas\Ordenar por COD_Curso"
+          TopLeft="301,423" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Cargar Matriculas\Ordenar por COD_Carrera 1"
+          TopLeft="421,678" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Cargar Matriculas\Unión de todo"
+          TopLeft="193,91" />
         <NodeLayout
           Size="134,42"
           Id="Package\Cargar Matriculas\Leer Cursos"
@@ -44018,13 +44683,9 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Matriculas\Cargar Matriculas"
           TopLeft="872,1215" />
         <NodeLayout
-          Size="193,42"
-          Id="Package\Cargar Matriculas\Ordenar por COD_Curso"
-          TopLeft="301,423" />
-        <NodeLayout
-          Size="210,42"
-          Id="Package\Cargar Matriculas\Ordenar por COD_Carrera 2"
-          TopLeft="799,681" />
+          Size="211,42"
+          Id="Package\Cargar Matriculas\Ordenar por COD_Alumno 2"
+          TopLeft="1073.71428571429,938.142857142857" />
         <NodeLayout
           Size="188,42"
           Id="Package\Cargar Matriculas\Leer Matriculas 201802"
@@ -44033,10 +44694,6 @@ where [refTable].[Nombre] = ?</property>
           Size="190,42"
           Id="Package\Cargar Matriculas\Combinación de mezcla"
           TopLeft="428,576" />
-        <NodeLayout
-          Size="210,42"
-          Id="Package\Cargar Matriculas\Ordenar por COD_Carrera 1"
-          TopLeft="421,678" />
         <NodeLayout
           Size="175,42"
           Id="Package\Cargar Matriculas\Conversión de datos"
@@ -44049,74 +44706,12 @@ where [refTable].[Nombre] = ?</property>
           Size="167,42"
           Id="Package\Cargar Matriculas\Buscar SK_Periodo"
           TopLeft="314,326" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\Cargar Matriculas\Ordenar por COD_Alumno 1"
+          TopLeft="615.428571428571,937.142857142857" />
         <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de origen de OLE DB2]"
-          TopLeft="1178.35714285714,88">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,850.142857142857"
-              Start="0,0"
-              End="0,842.642857142857">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,842.642857142857" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de origen de OLE DB1]"
-          TopLeft="906,89">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,592"
-              Start="0,0"
-              End="0,584.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,584.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de origen de OLE DB]"
-          TopLeft="635.25,88">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,337"
-              Start="0,0"
-              End="0,329.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,329.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de ordenación5]"
+          Id="Package\Cargar Matriculas.Paths[Salida de ordenación]"
           TopLeft="1179.21428571429,980.142857142857">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -44141,176 +44736,6 @@ where [refTable].[Nombre] = ?</property>
                     Point3="-191.880952380952,56.2088021649339" />
                   <mssgle:LineSegment
                     End="-191.880952380952,80.2142857142857" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de ordenación4]"
-          TopLeft="720.928571428571,979.142857142857">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="234.571428571429,88.7142857142857"
-              Start="0,0"
-              End="234.571428571429,81.2142857142857">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.3571428571428" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,40.3571428571428"
-                    Point2="0,44.3571428571428"
-                    Point3="4,44.3571428571428" />
-                  <mssgle:LineSegment
-                    End="230.571428571429,44.3571428571428" />
-                  <mssgle:CubicBezierSegment
-                    Point1="230.571428571429,44.3571428571428"
-                    Point2="234.571428571429,44.3571428571428"
-                    Point3="234.571428571429,48.3571428571428" />
-                  <mssgle:LineSegment
-                    End="234.571428571429,81.2142857142857" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de ordenación3]"
-          TopLeft="904,723">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-154.666666666667,98"
-              Start="0,0"
-              End="-154.666666666667,90.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.3310069790627" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,54.3310069790627"
-                    Point2="0,58.3310069790627"
-                    Point3="-4,58.3310069790627" />
-                  <mssgle:LineSegment
-                    End="-150.666666666667,58.3310069790627" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-150.666666666667,58.3310069790627"
-                    Point2="-154.666666666667,58.3310069790627"
-                    Point3="-154.666666666667,62.3310069790627" />
-                  <mssgle:LineSegment
-                    End="-154.666666666667,90.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de ordenación2]"
-          TopLeft="526,720">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="159.666666666667,101"
-              Start="0,0"
-              End="159.666666666667,93.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.1166500498504" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.1166500498504"
-                    Point2="0,60.1166500498504"
-                    Point3="4,60.1166500498504" />
-                  <mssgle:LineSegment
-                    End="155.666666666667,60.1166500498504" />
-                  <mssgle:CubicBezierSegment
-                    Point1="155.666666666667,60.1166500498504"
-                    Point2="159.666666666667,60.1166500498504"
-                    Point3="159.666666666667,64.1166500498504" />
-                  <mssgle:LineSegment
-                    End="159.666666666667,93.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de ordenación1]"
-          TopLeft="631.5,467">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-78.1666666666667,109"
-              Start="0,0"
-              End="-78.1666666666667,101.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.8538622129436" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,60.8538622129436"
-                    Point2="0,64.8538622129436"
-                    Point3="-4,64.8538622129436" />
-                  <mssgle:LineSegment
-                    End="-74.1666666666667,64.8538622129436" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-74.1666666666667,64.8538622129436"
-                    Point2="-78.1666666666667,64.8538622129436"
-                    Point3="-78.1666666666667,68.8538622129436" />
-                  <mssgle:LineSegment
-                    End="-78.1666666666667,101.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de ordenación]"
-          TopLeft="397.5,465">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="125.5,111"
-              Start="0,0"
-              End="125.5,103.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,51.5"
-                    Point2="0,55.5"
-                    Point3="4,55.5" />
-                  <mssgle:LineSegment
-                    End="121.5,55.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="121.5,55.5"
-                    Point2="125.5,55.5"
-                    Point3="125.5,59.5" />
-                  <mssgle:LineSegment
-                    End="125.5,103.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -44455,40 +44880,92 @@ where [refTable].[Nombre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="188,42"
-          Id="Package\Cargar Matriculas\Leer Matriculas 201901"
-          TopLeft="283,17" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Cargar Matriculas\Unión de todo"
-          TopLeft="193,91" />
         <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de origen de Excel]"
-          TopLeft="138,59">
+          Id="Package\Cargar Matriculas.Paths[Salida de Unión de todo 1]"
+          TopLeft="338,112">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="104.666666666667,32"
+              EndConnector="56.5,31"
               Start="0,0"
-              End="104.666666666667,24.5">
+              End="56.5,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.9904502046385" />
+                    End="52.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.9904502046385"
-                    Point2="0,18.9904502046385"
-                    Point3="4,18.9904502046385" />
+                    Point1="52.5,0"
+                    Point2="56.5,0"
+                    Point3="56.5,4" />
                   <mssgle:LineSegment
-                    End="100.666666666667,18.9904502046385" />
-                  <mssgle:CubicBezierSegment
-                    Point1="100.666666666667,18.9904502046385"
-                    Point2="104.666666666667,18.9904502046385"
-                    Point3="104.666666666667,22.9904502046385" />
+                    End="56.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculas.Paths[Salida de origen de OLE DB2]"
+          TopLeft="1178.35714285714,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,850.142857142857"
+              Start="0,0"
+              End="0,842.642857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="104.666666666667,24.5" />
+                    End="0,842.642857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculas.Paths[Salida de origen de OLE DB1]"
+          TopLeft="906,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,592"
+              Start="0,0"
+              End="0,584.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,584.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculas.Paths[Salida de origen de OLE DB]"
+          TopLeft="635.25,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,337"
+              Start="0,0"
+              End="0,329.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,329.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -44532,25 +45009,201 @@ where [refTable].[Nombre] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Cargar Matriculas.Paths[Salida de Unión de todo 1]"
-          TopLeft="338,112">
+          Id="Package\Cargar Matriculas.Paths[Salida de origen de Excel]"
+          TopLeft="138,59">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="56.5,31"
+              EndConnector="104.666666666667,32"
               Start="0,0"
-              End="56.5,23.5">
+              End="104.666666666667,24.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="52.5,0" />
+                    End="0,14.9904502046385" />
                   <mssgle:CubicBezierSegment
-                    Point1="52.5,0"
-                    Point2="56.5,0"
-                    Point3="56.5,4" />
+                    Point1="0,14.9904502046385"
+                    Point2="0,18.9904502046385"
+                    Point3="4,18.9904502046385" />
                   <mssgle:LineSegment
-                    End="56.5,23.5" />
+                    End="100.666666666667,18.9904502046385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="100.666666666667,18.9904502046385"
+                    Point2="104.666666666667,18.9904502046385"
+                    Point3="104.666666666667,22.9904502046385" />
+                  <mssgle:LineSegment
+                    End="104.666666666667,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculas.Paths[Salida de ordenación5]"
+          TopLeft="397.5,465">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125.5,111"
+              Start="0,0"
+              End="125.5,103.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,51.5"
+                    Point2="0,55.5"
+                    Point3="4,55.5" />
+                  <mssgle:LineSegment
+                    End="121.5,55.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.5,55.5"
+                    Point2="125.5,55.5"
+                    Point3="125.5,59.5" />
+                  <mssgle:LineSegment
+                    End="125.5,103.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculas.Paths[Salida de ordenación4]"
+          TopLeft="631.5,467">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-78.1666666666667,109"
+              Start="0,0"
+              End="-78.1666666666667,101.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.8538622129436" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.8538622129436"
+                    Point2="0,64.8538622129436"
+                    Point3="-4,64.8538622129436" />
+                  <mssgle:LineSegment
+                    End="-74.1666666666667,64.8538622129436" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.1666666666667,64.8538622129436"
+                    Point2="-78.1666666666667,64.8538622129436"
+                    Point3="-78.1666666666667,68.8538622129436" />
+                  <mssgle:LineSegment
+                    End="-78.1666666666667,101.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculas.Paths[Salida de ordenación3]"
+          TopLeft="526,720">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="159.666666666667,101"
+              Start="0,0"
+              End="159.666666666667,93.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.1166500498504" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.1166500498504"
+                    Point2="0,60.1166500498504"
+                    Point3="4,60.1166500498504" />
+                  <mssgle:LineSegment
+                    End="155.666666666667,60.1166500498504" />
+                  <mssgle:CubicBezierSegment
+                    Point1="155.666666666667,60.1166500498504"
+                    Point2="159.666666666667,60.1166500498504"
+                    Point3="159.666666666667,64.1166500498504" />
+                  <mssgle:LineSegment
+                    End="159.666666666667,93.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculas.Paths[Salida de ordenación2]"
+          TopLeft="904,723">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-154.666666666667,98"
+              Start="0,0"
+              End="-154.666666666667,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.3310069790627" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,54.3310069790627"
+                    Point2="0,58.3310069790627"
+                    Point3="-4,58.3310069790627" />
+                  <mssgle:LineSegment
+                    End="-150.666666666667,58.3310069790627" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-150.666666666667,58.3310069790627"
+                    Point2="-154.666666666667,58.3310069790627"
+                    Point3="-154.666666666667,62.3310069790627" />
+                  <mssgle:LineSegment
+                    End="-154.666666666667,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculas.Paths[Salida de ordenación1]"
+          TopLeft="720.928571428571,979.142857142857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="234.571428571429,88.7142857142857"
+              Start="0,0"
+              End="234.571428571429,81.2142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.3571428571428" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.3571428571428"
+                    Point2="0,44.3571428571428"
+                    Point3="4,44.3571428571428" />
+                  <mssgle:LineSegment
+                    End="230.571428571429,44.3571428571428" />
+                  <mssgle:CubicBezierSegment
+                    Point1="230.571428571429,44.3571428571428"
+                    Point2="234.571428571429,44.3571428571428"
+                    Point3="234.571428571429,48.3571428571428" />
+                  <mssgle:LineSegment
+                    End="234.571428571429,81.2142857142857" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -44577,6 +45230,19 @@ where [refTable].[Nombre] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Cargar Matriculas\Leer Alumnos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Matriculas\Leer Matriculas 201901">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -44672,19 +45338,27 @@ where [refTable].[Nombre] = ?</property>
     design-time-name="Package\Cargar Periodos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Cargar Periodos\Leer Periodos 2019"
+          TopLeft="685,17" />
         <NodeLayout
           Size="168,42"
           Id="Package\Cargar Periodos\Destino de OLE DB"
           TopLeft="447,419" />
         <NodeLayout
+          Size="169,42"
+          Id="Package\Cargar Periodos\Leer Periodos 2018"
+          TopLeft="297,15" />
+        <NodeLayout
           Size="117,42"
           Id="Package\Cargar Periodos\Ordenar"
           TopLeft="467,335" />
         <NodeLayout
-          Size="169,42"
-          Id="Package\Cargar Periodos\Leer Periodos 2018"
-          TopLeft="297,15" />
+          Size="145,42"
+          Id="Package\Cargar Periodos\Unión de todo"
+          TopLeft="455,89" />
         <NodeLayout
           Size="175,42"
           Id="Package\Cargar Periodos\Conversión de datos"
@@ -44693,80 +45367,6 @@ where [refTable].[Nombre] = ?</property>
           Size="164,42"
           Id="Package\Cargar Periodos\Columna derivada"
           TopLeft="444,256" />
-        <EdgeLayout
-          Id="Package\Cargar Periodos.Paths[Salida de columna derivada]"
-          TopLeft="525.75,298">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37"
-              Start="0,0"
-              End="0,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Periodos.Paths[Salida de ordenación]"
-          TopLeft="528.25,377">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Periodos.Paths[Salida de conversión de datos]"
-          TopLeft="526.25,216">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Cargar Periodos\Leer Periodos 2019"
-          TopLeft="685,17" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Cargar Periodos\Unión de todo"
-          TopLeft="455,89" />
         <EdgeLayout
           Id="Package\Cargar Periodos.Paths[Salida de origen de Excel]"
           TopLeft="381.5,57">
@@ -44798,7 +45398,105 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Periodos.Paths[Salida de ordenación]"
+          TopLeft="528.25,377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Periodos.Paths[Salida de conversión de datos]"
+          TopLeft="526.25,216">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Periodos.Paths[Salida de columna derivada]"
+          TopLeft="525.75,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Periodos.Paths[Salida de Unión de todo 1]"
+          TopLeft="527,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -44832,34 +45530,27 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Periodos.Paths[Salida de Unión de todo 1]"
-          TopLeft="527,131">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Periodos\Leer Periodos 2019">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Cargar Periodos\Destino de OLE DB">
     <Properties>
@@ -44891,6 +45582,10 @@ where [refTable].[Nombre] = ?</property>
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Cargar Ponderado_Alumno\Unión de todo"
+          TopLeft="262,87" />
         <NodeLayout
           Size="153,42"
           Id="Package\Cargar Ponderado_Alumno\Cargar Carreras"
@@ -44924,6 +45619,10 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Ponderado_Alumno\Combinación de mezcla 1"
           TopLeft="602,782" />
         <NodeLayout
+          Size="162,42"
+          Id="Package\Cargar Ponderado_Alumno\Origen de Excel 1"
+          TopLeft="393,36" />
+        <NodeLayout
           Size="164,42"
           Id="Package\Cargar Ponderado_Alumno\Columna derivada"
           TopLeft="625,869" />
@@ -44947,6 +45646,28 @@ where [refTable].[Nombre] = ?</property>
           Size="211,42"
           Id="Package\Cargar Ponderado_Alumno\Ordenar por COD_Alumno 2"
           TopLeft="794,605" />
+        <EdgeLayout
+          Id="Package\Cargar Ponderado_Alumno.Paths[Salida de Unión de todo 1]"
+          TopLeft="335,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Ponderado_Alumno.Paths[Salida de origen de OLE DB1]"
           TopLeft="897.75,85">
@@ -44983,6 +45704,62 @@ where [refTable].[Nombre] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,269.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Ponderado_Alumno.Paths[Salida de origen de Excel1]"
+          TopLeft="393,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-35.6666666666667,30"
+              Start="0,0"
+              End="-35.6666666666667,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-31.6666666666667,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-31.6666666666667,0"
+                    Point2="-35.6666666666667,0"
+                    Point3="-35.6666666666667,4" />
+                  <mssgle:LineSegment
+                    End="-35.6666666666667,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Ponderado_Alumno.Paths[Salida de origen de Excel]"
+          TopLeft="243,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68.6666666666667,28"
+              Start="0,0"
+              End="68.6666666666667,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.6666666666667,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="64.6666666666667,0"
+                    Point2="68.6666666666667,0"
+                    Point3="68.6666666666667,4" />
+                  <mssgle:LineSegment
+                    End="68.6666666666667,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -45261,92 +46038,6 @@ where [refTable].[Nombre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="162,42"
-          Id="Package\Cargar Ponderado_Alumno\Origen de Excel 1"
-          TopLeft="393,36" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Cargar Ponderado_Alumno\Unión de todo"
-          TopLeft="262,87" />
-        <EdgeLayout
-          Id="Package\Cargar Ponderado_Alumno.Paths[Salida de origen de Excel]"
-          TopLeft="243,59">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="68.6666666666667,28"
-              Start="0,0"
-              End="68.6666666666667,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="64.6666666666667,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="64.6666666666667,0"
-                    Point2="68.6666666666667,0"
-                    Point3="68.6666666666667,4" />
-                  <mssgle:LineSegment
-                    End="68.6666666666667,20.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Ponderado_Alumno.Paths[Salida de origen de Excel1]"
-          TopLeft="393,57">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-35.6666666666667,30"
-              Start="0,0"
-              End="-35.6666666666667,22.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-31.6666666666667,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-31.6666666666667,0"
-                    Point2="-35.6666666666667,0"
-                    Point3="-35.6666666666667,4" />
-                  <mssgle:LineSegment
-                    End="-35.6666666666667,22.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Ponderado_Alumno.Paths[Salida de Unión de todo 1]"
-          TopLeft="335,129">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -45398,6 +46089,14 @@ where [refTable].[Nombre] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Cargar Ponderado_Alumno\Origen de Excel 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Cargar Ponderado_Alumno\Buscar Sk_Periodo">
     <Properties>
       <Property>
@@ -45430,13 +46129,13 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201802"
           TopLeft="61,27" />
         <NodeLayout
-          Size="202,42"
-          Id="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Alumno 1"
-          TopLeft="655,957" />
-        <NodeLayout
           Size="201,42"
           Id="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Carrera 1"
           TopLeft="387,672" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Cargar Promedio_Curso_Alumno\Ordenar por COD_Curso 1"
+          TopLeft="212,438" />
         <NodeLayout
           Size="232,42"
           Id="Package\Cargar Promedio_Curso_Alumno\Cargar Promedio_Curso_Alumno"
@@ -45450,13 +46149,17 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Promedio_Curso_Alumno\Buscar SK_Periodo"
           TopLeft="223,243" />
         <NodeLayout
+          Size="145,42"
+          Id="Package\Cargar Promedio_Curso_Alumno\Unión de todo"
+          TopLeft="227,78" />
+        <NodeLayout
           Size="202,42"
           Id="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Alumno 2"
           TopLeft="1142,951" />
         <NodeLayout
-          Size="202,42"
-          Id="Package\Cargar Promedio_Curso_Alumno\Ordenar por COD_Curso 1"
-          TopLeft="212,438" />
+          Size="184,42"
+          Id="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901"
+          TopLeft="355,32" />
         <NodeLayout
           Size="202,42"
           Id="Package\Cargar Promedio_Curso_Alumno\Ordenar por COD_Curso 2"
@@ -45466,10 +46169,6 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla 2"
           TopLeft="900,1107" />
         <NodeLayout
-          Size="201,42"
-          Id="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Carrera 2"
-          TopLeft="897,679" />
-        <NodeLayout
           Size="155,42"
           Id="Package\Cargar Promedio_Curso_Alumno\Buscar SK_Sede"
           TopLeft="234,334" />
@@ -45478,9 +46177,17 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Promedio_Curso_Alumno\Columna Promedio y Retirado"
           TopLeft="894,1336" />
         <NodeLayout
+          Size="202,42"
+          Id="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Alumno 1"
+          TopLeft="655,957" />
+        <NodeLayout
           Size="199,42"
           Id="Package\Cargar Promedio_Curso_Alumno\Combinación de mezcla 1"
           TopLeft="653,806" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Cargar Promedio_Curso_Alumno\Ordenar por SK_Carrera 2"
+          TopLeft="897,679" />
         <NodeLayout
           Size="134,42"
           Id="Package\Cargar Promedio_Curso_Alumno\Leer Cursos"
@@ -45506,163 +46213,7 @@ where [refTable].[Nombre] = ?</property>
           Id="Package\Cargar Promedio_Curso_Alumno\Conversión de datos 1"
           TopLeft="912,1426" />
         <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de columna derivada]"
-          TopLeft="1003.75,1378">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de OLE DB2]"
-          TopLeft="638,98">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,337"
-              Start="0,0"
-              End="0,329.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,329.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de OLE DB1]"
-          TopLeft="1245.5,106">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,845"
-              Start="0,0"
-              End="0,837.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,837.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de OLE DB]"
-          TopLeft="998,99">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,580"
-              Start="0,0"
-              End="0,572.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,572.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación5]"
-          TopLeft="487.5,714">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="265,92"
-              Start="0,0"
-              End="265,84.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,42"
-                    Point2="0,46"
-                    Point3="4,46" />
-                  <mssgle:LineSegment
-                    End="261,46" />
-                  <mssgle:CubicBezierSegment
-                    Point1="261,46"
-                    Point2="265,46"
-                    Point3="265,50" />
-                  <mssgle:LineSegment
-                    End="265,84.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación4]"
-          TopLeft="1243,993">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-211.666666666667,114"
-              Start="0,0"
-              End="-211.666666666667,106.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,63.8544366899302" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,63.8544366899302"
-                    Point2="0,67.8544366899302"
-                    Point3="-4,67.8544366899302" />
-                  <mssgle:LineSegment
-                    End="-207.666666666667,67.8544366899302" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-207.666666666667,67.8544366899302"
-                    Point2="-211.666666666667,67.8544366899302"
-                    Point3="-211.666666666667,71.8544366899302" />
-                  <mssgle:LineSegment
-                    End="-211.666666666667,106.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación3]"
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación2]"
           TopLeft="756,999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -45696,65 +46247,31 @@ where [refTable].[Nombre] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación2]"
-          TopLeft="997.5,721">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-213.166666666667,85"
-              Start="0,0"
-              End="-213.166666666667,77.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5932203389831" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,46.5932203389831"
-                    Point2="0,50.5932203389831"
-                    Point3="-4,50.5932203389831" />
-                  <mssgle:LineSegment
-                    End="-209.166666666667,50.5932203389831" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-209.166666666667,50.5932203389831"
-                    Point2="-213.166666666667,50.5932203389831"
-                    Point3="-213.166666666667,54.5932203389831" />
-                  <mssgle:LineSegment
-                    End="-213.166666666667,77.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación1]"
-          TopLeft="640,477">
+          TopLeft="1243,993">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-123.666666666667,83"
+              EndConnector="-211.666666666667,114"
               Start="0,0"
-              End="-123.666666666667,75.5">
+              End="-211.666666666667,106.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.384133611691" />
+                    End="0,63.8544366899302" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,45.384133611691"
-                    Point2="0,49.384133611691"
-                    Point3="-4,49.384133611691" />
+                    Point1="0,63.8544366899302"
+                    Point2="0,67.8544366899302"
+                    Point3="-4,67.8544366899302" />
                   <mssgle:LineSegment
-                    End="-119.666666666667,49.384133611691" />
+                    End="-207.666666666667,67.8544366899302" />
                   <mssgle:CubicBezierSegment
-                    Point1="-119.666666666667,49.384133611691"
-                    Point2="-123.666666666667,49.384133611691"
-                    Point3="-123.666666666667,53.384133611691" />
+                    Point1="-207.666666666667,67.8544366899302"
+                    Point2="-211.666666666667,67.8544366899302"
+                    Point3="-211.666666666667,71.8544366899302" />
                   <mssgle:LineSegment
-                    End="-123.666666666667,75.5" />
+                    End="-211.666666666667,106.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -45765,30 +46282,30 @@ where [refTable].[Nombre] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación]"
-          TopLeft="313,480">
+          TopLeft="487.5,714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="173,80"
+              EndConnector="265,92"
               Start="0,0"
-              End="173,72.5">
+              End="265,84.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36" />
+                    End="0,42" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36"
-                    Point2="0,40"
-                    Point3="4,40" />
+                    Point1="0,42"
+                    Point2="0,46"
+                    Point3="4,46" />
                   <mssgle:LineSegment
-                    End="169,40" />
+                    End="261,46" />
                   <mssgle:CubicBezierSegment
-                    Point1="169,40"
-                    Point2="173,40"
-                    Point3="173,44" />
+                    Point1="261,46"
+                    Point2="265,46"
+                    Point3="265,50" />
                   <mssgle:LineSegment
-                    End="173,72.5" />
+                    End="265,84.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -45979,16 +46496,118 @@ where [refTable].[Nombre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901"
-          TopLeft="355,32" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Cargar Promedio_Curso_Alumno\Unión de todo"
-          TopLeft="227,78" />
         <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de Excel]"
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de columna derivada]"
+          TopLeft="1003.75,1378">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de Unión de todo 1]"
+          TopLeft="301.5,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de OLE DB2]"
+          TopLeft="638,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,337"
+              Start="0,0"
+              End="0,329.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,329.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de OLE DB1]"
+          TopLeft="1245.5,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,845"
+              Start="0,0"
+              End="0,837.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,837.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de OLE DB]"
+          TopLeft="998,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,580"
+              Start="0,0"
+              End="0,572.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,572.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de Excel1]"
           TopLeft="245,48">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -46016,7 +46635,7 @@ where [refTable].[Nombre] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de Excel1]"
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de origen de Excel]"
           TopLeft="355,53">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -46044,19 +46663,99 @@ where [refTable].[Nombre] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de Unión de todo 1]"
-          TopLeft="301.5,120">
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación5]"
+          TopLeft="997.5,721">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47"
+              EndConnector="-213.166666666667,85"
               Start="0,0"
-              End="0,39.5">
+              End="-213.166666666667,77.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="0,46.5932203389831" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.5932203389831"
+                    Point2="0,50.5932203389831"
+                    Point3="-4,50.5932203389831" />
+                  <mssgle:LineSegment
+                    End="-209.166666666667,50.5932203389831" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-209.166666666667,50.5932203389831"
+                    Point2="-213.166666666667,50.5932203389831"
+                    Point3="-213.166666666667,54.5932203389831" />
+                  <mssgle:LineSegment
+                    End="-213.166666666667,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación4]"
+          TopLeft="313,480">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="173,80"
+              Start="0,0"
+              End="173,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
+                  <mssgle:LineSegment
+                    End="169,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="169,40"
+                    Point2="173,40"
+                    Point3="173,44" />
+                  <mssgle:LineSegment
+                    End="173,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Promedio_Curso_Alumno.Paths[Salida de ordenación3]"
+          TopLeft="640,477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-123.666666666667,83"
+              Start="0,0"
+              End="-123.666666666667,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.384133611691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.384133611691"
+                    Point2="0,49.384133611691"
+                    Point3="-4,49.384133611691" />
+                  <mssgle:LineSegment
+                    End="-119.666666666667,49.384133611691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-119.666666666667,49.384133611691"
+                    Point2="-123.666666666667,49.384133611691"
+                    Point3="-123.666666666667,53.384133611691" />
+                  <mssgle:LineSegment
+                    End="-123.666666666667,75.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -46112,6 +46811,14 @@ where [refTable].[Nombre] = ?</property>
         <Value
           type="q4:string">0</Value>
       </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -46206,7 +46913,7 @@ where [refTable].[Nombre] = ?</property>
     design-time-name="Package\Cargar Sedes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168,42"
           Id="Package\Cargar Sedes\Destino de OLE DB"
@@ -46242,7 +46949,9 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -46264,7 +46973,9 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -46286,7 +46997,9 @@ where [refTable].[Nombre] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -46315,87 +47028,6 @@ where [refTable].[Nombre] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Alumnos\Leer Alumnos 201901">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Carreras\Leer Carreras 201901">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Cursos\Leer Cursos 201901">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Periodos\Leer Periodos 2019">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Matriculas\Leer Matriculas 201901">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Ponderado_Alumno\Origen de Excel 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Promedio_Curso_Alumno\Leer Registros 201901">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
