@@ -6,7 +6,7 @@ where a.Nombres like '%Kristel%' and a.Apellido_Paterno like '%Collazos%';
 select b.SK_Periodo, a.MCOD_Alumno, a.Nombre_Completo, a.Des_Sexo, b.Promedio, c.Descripcion, b.Retirado, c.Cant_Creditos
 from Alumno a left join Promedio_Curso_Alumno b on a.Sk_Alumno = b.Sk_Alumno
 left join Curso c on b.SK_Curso = c.SK_Curso
-where a.MCOD_Alumno = '201516808'
+where a.MCOD_Alumno = '201417394'
 order by b.SK_Periodo desc
 -- 201417394 kristell
 -- 201523075 omar

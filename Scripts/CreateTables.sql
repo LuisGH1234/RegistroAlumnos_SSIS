@@ -21,6 +21,7 @@
 			SK_Carrera int identity(1,1) NOT NULL,
 			Nombre nvarchar(50)  NOT NULL,
 			Codigo int  NOT NULL,
+			Promedio_Beca decimal(4,2) NULL,
 			CONSTRAINT Carrera_pk PRIMARY KEY  (SK_Carrera)
 		);
 
