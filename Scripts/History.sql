@@ -10,4 +10,6 @@ ALTER TABLE Ponderado_Alumno ADD Retirado varchar(2)  NOT NULL;
 
 ALTER TABLE Carrera ADD Promedio_Beca decimal(4,2) NULL;
 
-ALTER TABLE Curso DROP COLUMN Promedio_Beca;
+ALTER TABLE Promedio_Curso_Alumno DROP COLUMN Promedio_Beca;
+
+ALTER TABLE Ponderado_Alumno ADD Ponderado_Beca decimal(4,2) NULL;

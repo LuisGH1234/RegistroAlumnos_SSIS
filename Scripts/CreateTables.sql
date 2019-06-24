@@ -72,6 +72,7 @@
 			Sk_Alumno int  NOT NULL,
 			SK_Periodo int  NOT NULL,
 			Ponderado decimal(4,2)  NOT NULL,
+			Ponderado_Beca decimal(4,2) NULL,
 			Veces int  NOT NULL DEFAULT 1,
 			CONSTRAINT Ponderado_Alumno_pk PRIMARY KEY  (SK_Ponderado_Alumno)
 		);
@@ -88,7 +89,6 @@
 			Promedio decimal(4,2)  NOT NULL,
 			Nro_Vez_Curso int  NOT NULL,
 			Retirado varchar(2)  NOT NULL,
-			Promedio_Beca decimal(4,2) NULL,
 			Veces int  NOT NULL DEFAULT 1,
 			CONSTRAINT Promedio_Curso_Alumno_pk PRIMARY KEY  (SK_Promedio_Curso_Alumno)
 		);
